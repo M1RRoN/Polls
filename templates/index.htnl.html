@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-8">
+      <h2>All Polls</h2>
+      <hr>
+      {% if polls %}
+        <ul class="list-unstyled">
+          {% for poll in polls %}
+            <li>
+              <h4><a href="{% url 'poll-detail' poll.pk %}">{{ poll.title }}</a></h4>
+              <p>{{ poll.description }}</p>
+              <p class="text-muted">Created at: {{ poll.created_at }}</p>
+            </li>
+          {% endfor %}
+        </ul>
+      {% else %}
+        <p>No polls available.</p>
+      {% endif %}
+    </div>
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-header">
+          Login or Register
+        </div>
+        <div class="card-body">
+          <form method="post">
+            {% csrf_token %}
+            {{ login_form.as_p }}
+            <button type="submit" class="btn btn-primary">Login</button>
+          </form>
+          <hr>
+          <form method="post">
+            {% csrf_token %}
+            {{ registration_form.as_p }}
+            <button type="submit" class="btn btn-success">Register</button>
+          </form>
+        </div>
+      </div>
+      <div class="card mt-4">
+        <div class="card-header">
+          Chat
+        </div>
+        <div class="card-body">
+          <p>Chat will be added later.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
