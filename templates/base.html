@@ -27,10 +27,10 @@
         </li>
         {% else %}
         <li class="nav-item {% if request.resolver_match.view_name == 'login' %}active{% endif %}">
-          <a class="nav-link" href="#">Login</a>
+          <a class="nav-link" href="{% url 'login' %}">Login</a>
         </li>
         <li class="nav-item {% if request.resolver_match.view_name == 'register' %}active{% endif %}">
-          <a class="nav-link" href="#">Register</a>
+          <a class="nav-link" href="{% url 'signup' %">Register</a>
         </li>
         {% endif %}
       </ul>
